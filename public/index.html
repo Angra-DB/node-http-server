@@ -11,7 +11,6 @@
     <style>
         html                    { overflow-y:scroll; }
         body                    { padding-top:50px; }
-        #todo-list              { margin-bottom:30px; }
     </style>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -39,13 +38,15 @@
                 </form>
             </div>
         </div>
+
         </br>
+
         <div id="Lookup-form" class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
                     <div class="form-group">
 
-                        <input type="text" class="form-control input-lg text-center" placeholder="Forneça o ID!" ng-model="id">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Forneça o ID!" ng-model="idLookUp">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="lookup()">Buscar</button>
@@ -53,6 +54,20 @@
             </div>
         </div>
 
+        </br>
+
+        <div id="Delete-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+
+                        <input type="text" class="form-control input-lg text-center" placeholder="Forneça o ID!" ng-model="idDelete">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="delete()">Deletar</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </body>

@@ -72,14 +72,14 @@
       });
   });
 
-  app.get("/delete", function(req, res) {
+  app.post("/delete", function(req, res) {
 
-      var url_parts = url.parse(req.url, true);
-      var query = url_parts.query;
+      var id = req.body.id;
+      console.log(id);
 
       var client = net.createConnection({port: 1234}, function() {
-        console.log("conectou! - Executando operação de delete com id: " + query);
-        client.write("delete " + query);
+        console.log("conectou! - Executando operação de delete com id: " + id);
+        client.write("delete " + id);
       });
 
       var resData;
@@ -95,7 +95,7 @@
       });
   });
 
-  app.get("/update", function(req, res) {
+  app.post("/update", function(req, res) {
 
       var url_parts = url.parse(req.url, true);
       var query = url_parts.query;

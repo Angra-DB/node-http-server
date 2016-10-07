@@ -1,9 +1,9 @@
-// public/core.js
-var scotchTodo = angular.module('nodeServer', []);
+var nodeServer = angular.module('nodeServer', []);
 
 function mainController($scope, $http) {
     $scope.doc = "";
-    $scope.id = "";
+    $scope.idLookUp = "";
+    $scope.idDelete = "";
 
     $scope.save = function() {
     	var parameter = JSON.stringify({doc: $scope.doc});
@@ -17,9 +17,19 @@ function mainController($scope, $http) {
 	};
 
 	$scope.lookup = function() {
-    	var parameter = JSON.stringify({id: $scope.id});
-    	console.log(parameter);
+    	var parameter = JSON.stringify({id: $scope.idLookUp});
 	    $http.post('/lookup',parameter)
+	        .success(function(data) {
+	            console.log(data);
+	        })
+	        .error(function(data) {
+	            console.log('Error: ' + data);
+	        });
+	};
+
+	$scope.delete = function() {
+    	var parameter = JSON.stringify({id: $scope.idDelete});
+	    $http.post('/delete',parameter)
 	        .success(function(data) {
 	            console.log(data);
 	        })
