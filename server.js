@@ -29,11 +29,12 @@
   });
 
 
-  app.get("/save", function(req, res) {
-
+  app.post("/save", function(req, res) {
+      console.log(req.body.doc);
+      var documentReq = req.body.doc;
       var client = net.createConnection({port: 1234}, function() {
         console.log("conectou! - Executando operação de save");
-        client.write("save {Erlang}");
+        client.write("save " + documentReq);
       });
 
       var resData;
@@ -49,14 +50,13 @@
       });
   });
 
-  app.get("/lookup?id=1", function(req, res) {
-
-      var url_parts = url.parse(req.url, true);
-      var query = url_parts.query;
+  app.post("/lookup", function(req, res) {
+      var id = req.body.id;
+      console.log(id);
 
       var client = net.createConnection({port: 1234}, function() {
-        console.log("conectou! - Executando operação de lookup com id: " + query);
-        client.write("lookup " + query);
+        console.log("conectou! - Executando operação de lookup com id: " + id);
+        client.write("lookup " + id);
       });
 
       var resData;
@@ -72,7 +72,7 @@
       });
   });
 
-  app.get("/delete?id=1", function(req, res) {
+  app.get("/delete", function(req, res) {
 
       var url_parts = url.parse(req.url, true);
       var query = url_parts.query;
@@ -117,20 +117,3 @@
          console.log('Connection closed');
       });
   });
-
-  // function handleRequest(request, response) {
-  //   try {
-  //         //log the request on console
-  //         console.log(request.url);
-  //         //Dispatch
-  //         dispatcher.dispatch(request, response);
-  //     } catch(err) {
-  //         console.log(err);
-  //     }
-  // }
-
-  // var server = http.createServer(handleRequest);
-
-  // server.listen(PORT, function() {
-  //   console.log("Server listening on: http://localhost: " + PORT);
-  // })
