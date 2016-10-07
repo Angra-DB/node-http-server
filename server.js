@@ -45,7 +45,7 @@
       });
   });
 
-  app.onGet("/lookup?id=1", function(req, res) {
+  app.get("/lookup?id=1", function(req, res) {
 
       var url_parts = url.parse(req.url, true);
       var query = url_parts.query;
@@ -68,7 +68,7 @@
       });
   });
 
-  app.onGet("/delete?id=1", function(req, res) {
+  app.get("/delete?id=1", function(req, res) {
 
       var url_parts = url.parse(req.url, true);
       var query = url_parts.query;
@@ -91,7 +91,7 @@
       });
   });
 
-  app.onGet("/update", function(req, res) {
+  app.get("/update", function(req, res) {
 
       var url_parts = url.parse(req.url, true);
       var query = url_parts.query;
